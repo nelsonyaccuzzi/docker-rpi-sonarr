@@ -1,4 +1,4 @@
-# Sonarr Docker Image for Raspberry Pi
+# Sonarr Docker Image for Raspberry Pi [![Build Status](https://travis-ci.org/nelsonyaccuzzi/docker-rpi-sonarr.svg?branch=master)](https://travis-ci.org/nelsonyaccuzzi/docker-rpi-sonarr)
 
 ## Usage
 
