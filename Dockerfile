@@ -1,11 +1,22 @@
-FROM balenalib/raspberry-pi:buster
+ARG SONARR_PATH=/var/lib/sonarr
 
-ARG SONARR_VERSION=3.0.3
+FROM arm32v7/alpine:edge as tar
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 2009837CBFFD68F45BC180471F4F90DE2A9B4BF8 && \
-echo "deb https://apt.sonarr.tv/debian buster main" | sudo tee /etc/apt/sources.list.d/sonarr.list && \
-apt update && apt install sonarr 
+ARG SONARR_PATH
+ARG VERSION
 
-COPY scripts/startup.sh .
+RUN apk add curl \
+ && curl -L -O http://download.sonarr.tv/v3/phantom-develop/$VERSION/Sonarr.phantom-develop.$VERSION.linux.tar.gz \
+ && tar -xvzf Sonarr.phantom-develop.*.linux.tar.gz \
+ && mkdir $SONARR_PATH && mv Sonarr/* $SONARR_PATH \
+ && rm Sonarr.phantom-develop.*.linux.tar.gz
 
-CMD ["./startup.sh"]
+FROM arm32v7/mono
+
+ARG SONARR_PATH
+
+COPY --from=tar $SONARR_PATH $SONARR_PATH
+
+WORKDIR $SONARR_PATH
+
+CMD ["mono", "Sonarr.exe", "/nobrowser", "/data=/config", "--debug"]

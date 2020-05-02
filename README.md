@@ -1,4 +1,8 @@
-# Sonarr Docker Image for Raspberry Pi [![Build Status](https://travis-ci.org/nelsonyaccuzzi/docker-rpi-sonarr.svg?branch=master)](https://travis-ci.org/nelsonyaccuzzi/docker-rpi-sonarr)
+# Sonarr Docker Image for Raspberry Pi 
+![Travis (.org)](https://img.shields.io/travis/nelsonyaccuzzi/docker-rpi-sonarr?style=flat-square)
+![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/nelsonyaccuzzi/docker-rpi-sonarr?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/nelsonyaccuzzi/docker-rpi-sonarr?style=flat-square)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/nelsonyaccuzzi/docker-rpi-sonarr?sort=semver&style=flat-square)
 
 ## Usage
 
