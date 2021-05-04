@@ -5,7 +5,7 @@ FROM arm32v7/alpine:edge as tar
 ARG SONARR_PATH
 ARG VERSION
 
-RUN apk add curl \
+RUN apk add curl tar \
  && curl -L -O http://download.sonarr.tv/v3/main/$VERSION/Sonarr.main.$VERSION.linux.tar.gz \
  && tar -xvzf Sonarr.main.*.linux.tar.gz \
  && mkdir $SONARR_PATH && mv Sonarr/* $SONARR_PATH \
