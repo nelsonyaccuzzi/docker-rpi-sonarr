@@ -1,15 +1,15 @@
 ARG SONARR_PATH=/var/lib/sonarr
 
-FROM arm32v7/alpine:edge as tar
+FROM arm32v7/alpine:3.10 as tar
 
 ARG SONARR_PATH
 ARG VERSION
 
 RUN apk add curl \
- && curl -L -O http://download.sonarr.tv/v3/phantom-develop/$VERSION/Sonarr.phantom-develop.$VERSION.linux.tar.gz \
- && tar -xvzf Sonarr.phantom-develop.*.linux.tar.gz \
+ && curl -L -O http://download.sonarr.tv/v3/main/$VERSION/Sonarr.main.$VERSION.linux.tar.gz \
+ && tar -xvzf Sonarr.main.*.linux.tar.gz \
  && mkdir $SONARR_PATH && mv Sonarr/* $SONARR_PATH \
- && rm Sonarr.phantom-develop.*.linux.tar.gz
+ && rm Sonarr.main.*.linux.tar.gz
 
 FROM arm32v7/mono
 
